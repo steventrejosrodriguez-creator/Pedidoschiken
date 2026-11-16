@@ -171,6 +171,35 @@ button{font:inherit;color:inherit;cursor:pointer;border:0;background:none;paddin
 .ue b{display:block;font-size:15px}
 body.typing main,body.typing footer,body.typing .bar{display:none!important}
 .panel{contain:layout style}
+
+/* Navidad (se apaga sola el 27 de diciembre) */
+:root{--green:#1f7a3d;--green-deep:#0f4d26}
+.snow{position:fixed;inset:0;pointer-events:none;z-index:55;overflow:hidden}
+.snow i{position:absolute;top:-24px;color:#fff;opacity:.85;font-style:normal;animation:fall linear infinite;text-shadow:0 0 6px rgba(255,255,255,.7);will-change:transform}
+@keyframes fall{to{transform:translate3d(var(--dx,30px),110vh,0) rotate(360deg)}}
+body.xmas .top{border-bottom:0}
+body.xmas .top::after{content:"";position:absolute;left:0;right:0;top:100%;height:16px;pointer-events:none;background:
+ radial-gradient(circle at 12px 9px,#ff4b3a 0 4px,transparent 5px),radial-gradient(circle at 32px 9px,#ffd21f 0 4px,transparent 5px),radial-gradient(circle at 52px 9px,#3ddc84 0 4px,transparent 5px),radial-gradient(circle at 72px 9px,#4da3ff 0 4px,transparent 5px),
+ linear-gradient(#1a0a06,#1a0a06) 0 2px/100% 2px no-repeat;background-size:80px 16px,80px 16px,80px 16px,80px 16px,100% 16px;background-repeat:repeat-x;animation:lights 1.6s steps(2) infinite;filter:drop-shadow(0 0 4px rgba(255,255,255,.35))}
+@keyframes lights{50%{filter:brightness(.55) drop-shadow(0 0 1px rgba(255,255,255,.2))}}
+body.xmas .eyebrow{background:var(--green);color:#fff}
+body.xmas .tab[aria-selected="true"]{background:#fff;color:var(--green-deep)}
+body.xmas .marquee{background:var(--green);color:#fff;border-color:#000}
+body.xmas .marquee span:nth-child(even){color:var(--yellow)}
+body.xmas .sticker{background:#fff;border-color:var(--green)}
+body.xmas .sticker b{color:var(--green)}
+body.xmas .tag{background:var(--green);color:#fff}
+body.xmas footer{background:var(--green-deep)}
+.xm-rib{display:inline-block;margin-top:10px;background:#fff;color:var(--red);font-weight:800;font-size:14px;padding:6px 14px;border-radius:99px;box-shadow:3px 3px 0 #000;transform:rotate(-1deg)}
+.xm-rib[hidden]{display:none}
+.xmban{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;background:var(--green);color:#fff;border:4px solid #fff;border-radius:20px;padding:14px 18px;margin-bottom:18px;box-shadow:6px 6px 0 #000;animation:tuePulse 2.4s ease-in-out infinite}
+.xmban[hidden]{display:none}
+.xmban small{display:inline-block;background:var(--yellow);color:var(--ink);font-weight:800;font-size:12px;letter-spacing:.08em;text-transform:uppercase;border-radius:6px;padding:2px 8px;margin-right:8px}
+.xmban b{font-family:var(--font-display);font-weight:400;font-size:26px;color:#fff;text-shadow:2px 2px 0 #000}
+.xmban span{display:block;font-size:14px;margin-top:2px;color:#d8f5e1}
+.xmban .xmp{display:flex;align-items:center;gap:12px}
+.xmban strong{font-family:var(--font-display);font-weight:400;font-size:34px;color:var(--yellow);text-shadow:2px 2px 0 #000}
+body.lock .snow,body.typing .snow{display:none}
 body.lock .marquee div,body.lock .steam i,body.lock .heroimg .frame,body.lock .sticker,body.lock .status i,body.lock .tue.on{animation-play-state:paused}
 
 /* gallery + footer */
@@ -301,6 +330,7 @@ details textarea{width:100%;min-height:120px;font:12px/1.4 ui-monospace,monospac
   <div class="wrap">
     <div>
       <span class="eyebrow" id="brEy"></span> <button class="swch" id="brSw" data-act="pick-branch" type="button">Cambiar sucursal</button>
+      <div class="xm-rib" id="xmRib" hidden>Feliz Navidad · Nuevo combo navideño</div>
       <h1 class="poster">Pollo frito crocante, directo a tu mesa</h1>
       <p class="lead">Arma tu pedido en un minuto. Lo recibimos por WhatsApp y lo preparamos al momento, para retirar en el local o con envío express.</p>
       <div class="cta">
@@ -330,6 +360,7 @@ details textarea{width:100%;min-height:120px;font:12px/1.4 ui-monospace,monospac
 <nav class="tabs" aria-label="Categorías del menú"><div class="wrap" id="tabs" role="tablist"></div></nav>
 
 <section id="menu"><div class="wrap">
+  <div class="xmban" id="xmBan" hidden><div><small>Nuevo</small><b>Combo navideño</b><span>2 pechuga y ala, 2 muslo y cadera y ceviche de banano</span></div><div class="xmp"><strong>₡7000</strong><button class="btn btn-y" data-act="open-xmas" style="padding:10px 18px">Pedir</button></div></div>
   <div class="tue" id="tue"><b id="tueB"></b><span id="tueS" style="flex:1;min-width:170px"></span><button class="btn btn-r" data-act="promo-go" style="padding:9px 16px">Aprovechar</button></div>
   <div id="menuBody"></div>
 </div></section>
@@ -405,6 +436,7 @@ const ITEMS=[
   {id:'palom',cat:'individual',name:'Palomitas de pollo',desc:'Incluye un refresco pequeño a tu elección.',price:2000,img:'palomitas',opts:[drinkOpt(DRINK_SMALL)]},
   {id:'taco',cat:'individual',name:'Super taco',desc:'Nuestro super taco de res.',price:2500,img:'logo'},
   {id:'troc',cat:'individual',name:'Trocitos de pollo',desc:'Tú decides cuánto quieres: desde ₡1500.',amount:true,img:'tray',cover:1,opts:[]},
+  {id:'navi',cat:'combos',name:'Combo navideño',desc:'2 porciones de pechuga y ala, 2 porciones de muslo y cadera y un ceviche de banano.',price:7000,img:'display',cover:1,tag:'Nuevo combo navideño'},
   {id:'fam',cat:'combos',name:'Combo familiar',desc:'10 piezas de pollo, tortillas, papas fritas y refresco grande.',price:11500,img:'familiar',opts:[drinkOpt(DRINK_LARGE,'Elige el refresco grande'),PAPAS_OPT]},
   {id:'eco',cat:'combos',name:'Combo económico',desc:'8 piezas de pollo (muslo y cadera) con tortillas.',price:6000,img:'economico'},
   {id:'mega',cat:'combos',name:'Mega combo',desc:'3 porciones de pechuga y ala, 4 de muslo y cadera, papas asadas, 1 papas grandes, tortillas y 1 refresco de 2.5.',price:16000,img:'mega',tag:'El más completo',opts:[slotOpt(2),drinkOpt(DRINK_MEGA,'Elige el refresco de 2.5'),PAPAS_OPT]},
@@ -503,7 +535,7 @@ function renderStatus(){
   const pd=curPromo();
   $('#tue').classList.toggle('on',!!pd);
   if(pd){$('#tueB').textContent=pd.t;$('#tueS').textContent=pd.d}
-  $('#sticker').innerHTML=pd?'<small>'+pd.sticker[0]+'</small><b>'+pd.sticker[1]+'</b>':'<small>Porciones desde</small><b>₡1600</b>';
+  $('#sticker').innerHTML=pd?'<small>'+pd.sticker[0]+'</small><b>'+pd.sticker[1]+'</b>':(xmasOn()?'<small>Nuevo combo navideño</small><b>₡7000</b>':'<small>Porciones desde</small><b>₡1600</b>');
 }
 
 /* ---------- carrito: botón, barra, animaciones ---------- */
@@ -600,7 +632,7 @@ function applyBranch(){
   $('#brEy').textContent=BR.name; $('#brFoot').textContent=BR.name+(BR.ref?', '+BR.ref:'');
   $('#waShow').textContent='WhatsApp '+BR.wa_show;
   document.title='Chicken Manía · '+BR.short;
-  const row=['POLLO FRITO','ALITAS','COMBOS','PAPAS','CRUJIENTE','RECIÉN HECHO','EXPRESS',BR.name.toUpperCase()].map(w=>'<span>'+w+'</span>').join('<span>★</span>');
+  const row=(xmasOn()?['FELIZ NAVIDAD']:[]).concat(['POLLO FRITO','ALITAS','COMBOS','PAPAS','CRUJIENTE','RECIÉN HECHO','EXPRESS',BR.name.toUpperCase()]).map(w=>'<span>'+w+'</span>').join('<span>★</span>');
   $('#mq').innerHTML=row+'<span>★</span>'+row+'<span>★</span>';
 }
 function setBranch(id,fromPicker){
@@ -771,6 +803,7 @@ document.addEventListener('click',e=>{
     case 'locate': locate(); break;
     case 'branch': setBranch(el.dataset.id,true); break;
     case 'pick-branch': closeLayer(); showBranchPicker(); break;
+    case 'open-xmas': openSheet('navi'); break;
     case 'promo-go': promoGo(); break;
     case 'go-menu': e.preventDefault(); $('#menu').scrollIntoView({behavior:'smooth'}); break;
     case 'open-sheet': openSheet(el.dataset.id); break;
@@ -819,12 +852,22 @@ document.addEventListener('click',e=>{
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&$('#layer').firstChild)closeLayer()});
 
 /* ---------- arranque ---------- */
+function xmasOn(){return Date.now()<Date.UTC(2026,11,27,6)} /* Navidad activa hasta el 26 de dic (hora de Costa Rica) */
+function startXmas(){
+  if(!xmasOn())return;
+  document.body.classList.add('xmas'); $('#xmRib').hidden=false; $('#xmBan').hidden=false;
+  const sn=document.createElement('div'); sn.className='snow'; sn.setAttribute('aria-hidden','true');
+  const ch=['✻','❄','✼','•'];
+  for(let k=0;k<22;k++){const e=document.createElement('i');e.textContent=ch[k%4];e.style.left=(Math.random()*100)+'%';e.style.fontSize=(10+Math.random()*16)+'px';e.style.animationDuration=(9+Math.random()*10)+'s';e.style.animationDelay=(-Math.random()*16)+'s';e.style.setProperty('--dx',(Math.random()*80-40)+'px');sn.appendChild(e)}
+  document.body.appendChild(sn);
+}
 function init(){
   $('#logoTop').src=IMG.logo; $('#logoFoot').src=IMG.logo;
   $('#heroPhoto').src=IMG.wings; $('#g1').src=IMG.display; $('#g2').src=IMG.tray; $('#g3').src=IMG.wings2;
   let saved=null;try{saved=localStorage.getItem('cm_branch')}catch(e){}
   if(saved&&BRANCHES.some(b=>b.id===saved))BR=BRANCHES.find(b=>b.id===saved);
   applyBranch();
+  startXmas();
   renderStatus(); renderTabs(); renderMenu(); renderCartBadges();
   setInterval(renderStatus,30000);
 }
