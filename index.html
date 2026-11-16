@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://steventrejosrodriguez-creator.github.io/Pedidos2/">
+<meta property="og:url" content="https://steventrejosrodriguez-creator.github.io/Pedidoschiken/">
 <meta property="og:title" content="Chicken Manía">
 <meta property="og:description" content="Pide pollo frito, alitas y combos en línea. San Rafael y El Coyol de Alajuela.">
-<meta property="og:image" content="https://steventrejosrodriguez-creator.github.io/Pedidos2/og-image.png">
+<meta property="og:image" content="https://steventrejosrodriguez-creator.github.io/Pedidoschiken/og-image.png">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#6d0e06">
@@ -383,7 +383,7 @@ function shop(){
 const SAUCES=['Mostaza miel','Barbacoa','Búfalo','Ranch','De la casa'];
 const SLOT_OPTS=SAUCES.concat(['Ceviche de banano','Sin salsa']);
 const DRINK_SMALL=['Milori roja','Milori naranja','Té de melocotón','Té de limón','Té de frutas','Té blanco'];
-const DRINK_LARGE=['Pepsi 2.5 L','Coca-Cola','Coca-Cola Zero','Té de limón (grande)','Té de melocotón (grande)'];
+const DRINK_LARGE=['Pepsi 2.5 L','Coca-Cola','Coca-Cola Zero','Té de limón mediano','Té de melocotón mediano'];
 const DRINK_MEGA=['Pepsi 2.5 L','Coca-Cola','Coca-Cola Zero'];
 const PAPAS_OPT={k:'papas',label:'Salsas de las papas',req:1,list:['Salsa de una vez','Salsa aparte','Sin salsa']};
 const drinkOpt=(list,label)=>({k:'drink',label:label||'Elige tu refresco',req:1,list});
@@ -415,11 +415,11 @@ const ITEMS=[
 ];
 /* artículos de una sola línea: se agregan con un toque */
 const QUICK=[
-  {id:'bp',grp:'Bebidas grandes',name:'Pepsi 2.5 L',price:1200,cat:'bebidas'},
-  {id:'bc',grp:'Bebidas grandes',name:'Coca-Cola',price:1200,cat:'bebidas'},
-  {id:'bcz',grp:'Bebidas grandes',name:'Coca-Cola Zero',price:1200,cat:'bebidas'},
-  {id:'btl',grp:'Bebidas grandes',name:'Té de limón (grande)',price:1200,cat:'bebidas'},
-  {id:'btm',grp:'Bebidas grandes',name:'Té de melocotón (grande)',price:1200,cat:'bebidas'},
+  {id:'bp',grp:'Bebida grande',name:'Pepsi 2.5 L',price:2200,cat:'bebidas'},
+  {id:'bc',grp:'Bebidas medianas',name:'Coca-Cola',price:1200,cat:'bebidas'},
+  {id:'bcz',grp:'Bebidas medianas',name:'Coca-Cola Zero',price:1200,cat:'bebidas'},
+  {id:'btl',grp:'Bebidas medianas',name:'Té de limón mediano',price:1200,cat:'bebidas'},
+  {id:'btm',grp:'Bebidas medianas',name:'Té de melocotón mediano',price:1200,cat:'bebidas'},
   {id:'sr',grp:'Bebidas pequeñas',name:'Milori roja',price:800,cat:'bebidas'},
   {id:'sn',grp:'Bebidas pequeñas',name:'Milori naranja',price:800,cat:'bebidas'},
   {id:'stm',grp:'Bebidas pequeñas',name:'Té de melocotón',price:800,cat:'bebidas'},
