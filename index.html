@@ -9,6 +9,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#6d0e06">
 <style>[hidden]{display:none!important}</style>
+<style>[hidden]{display:none!important}</style>
 <title>Chicken Manía</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -433,7 +434,7 @@ const CATS=[
 const WING=[{n:5,reg:2000,tue:1800,s:1},{n:10,reg:3900,tue:3700,s:2},{n:20,reg:7500,tue:7000,s:4},{n:30,reg:11000,tue:10500,s:6}];
 const ITEMS=[
   {id:'muslo',cat:'individual',name:'Porción muslo y cadera',desc:'Muslo y cadera de pollo frito con tortillas.',price:1600,img:'muslo',pos:'center 70%',promo:{day:3,reg:1600,now:1400}},
-  {id:'pechuga',cat:'individual',name:'Porción pechuga y ala',desc:'Pechuga y ala de pollo frito con tortillas.',price:1900,img:'pechuga',promo:{day:4,reg:1900,now:1600}},
+  {id:'pechuga',cat:'individual',name:'Porción pechuga y ala',desc:'Pechuga y ala de pollo frito con tortillas.',price:1900,img:'pechuga',promo:{day:4,reg:1900,now:1700}},
   {id:'hamb',cat:'individual',name:'Hamburguesa de pollo',desc:'Incluye un refresco pequeño a tu elección.',price:2500,img:'hamburguesa',opts:[drinkOpt(DRINK_SMALL)]},
   {id:'palom',cat:'individual',name:'Palomitas de pollo',desc:'Incluye un refresco pequeño a tu elección.',price:2000,img:'palomitas',opts:[drinkOpt(DRINK_SMALL)]},
   {id:'taco',cat:'individual',name:'Super taco',desc:'Nuestro super taco de res.',price:2500,img:'logo'},
@@ -495,7 +496,7 @@ const basePrice=it=>{const p=promoOf(it);return p?p.now:(it.w?it.w.reg:it.price)
 const PROMO_DAYS={
  2:{t:'Martes de alitas',d:'Todas las alitas con precio rebajado. Mira el precio original tachado.',tab:'alitas',sticker:['Hoy martes','Alitas en oferta'],pop:{h:'¡Hoy martes de alitas!',big:'5 alitas',reg:2000,now:1800,sub:'10 por '+money(3700)+' · 20 por '+money(7000)+' · 30 por '+money(10500)}},
  3:{t:'Miércoles de muslo y cadera',d:'La porción de muslo y cadera a ₡1400 en lugar de ₡1600.',tab:'individual',item:'muslo',sticker:['Hoy miércoles','₡1400'],pop:{h:'¡Hoy miércoles!',big:'Porción de muslo y cadera',reg:1600,now:1400,sub:'Con tortillas incluidas'}},
- 4:{t:'Jueves de pechuga y ala',d:'La porción de pechuga y ala a ₡1600 en lugar de ₡1900.',tab:'individual',item:'pechuga',sticker:['Hoy jueves','₡1600'],pop:{h:'¡Hoy jueves!',big:'Porción de pechuga y ala',reg:1900,now:1600,sub:'Con tortillas incluidas'}}
+ 4:{t:'Jueves de pechuga y ala',d:'La porción de pechuga y ala a ₡1700 en lugar de ₡1900.',tab:'individual',item:'pechuga',sticker:['Hoy jueves','₡1700'],pop:{h:'¡Hoy jueves!',big:'Porción de pechuga y ala',reg:1900,now:1700,sub:'Con tortillas incluidas'}}
 };
 function priceLabel(it){
   if(it.amount) return 'Desde ₡1500';
